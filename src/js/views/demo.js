@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
 import "../../styles/demo.css";
+import { LikeSwitch } from "../component/LikeSwitch";
+
 
 export const Demo = () => {
   const { store, actions } = useContext(Context);
@@ -17,7 +17,7 @@ export const Demo = () => {
               <div class="star-wars-card">
                 <div class="card-content">
                   <div class="card-image"></div>
-                  <span class="card-title">Luke Skywalker</span>
+                  <span class="card-title">Luke Skywalker <LikeSwitch/></span>
                   <button class="card-button">Ver más</button>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/single.css";
+import { LikeSwitch } from "../component/LikeSwitch";
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
@@ -14,7 +15,8 @@ export const Single = props => {
 <div class="star-wars-card">
   <div class="card-content">
     <div class="card-image"></div>
-    <span class="card-title">Luke Skywalker</span>
+    <span class="card-title">Luke Skywalker <LikeSwitch/></span>
+    
     <button class="card-button">Ver más</button>
   </div>
 </div>
