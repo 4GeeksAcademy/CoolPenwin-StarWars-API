@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/single.css";
 import { LikeSwitch } from "../component/LikeSwitch";
+import violentKitty from "../../img/violentKitty.jpg";
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
@@ -14,8 +15,8 @@ export const Single = props => {
 
 <div class="star-wars-card">
   <div class="card-content">
-    <div class="card-image"></div>
-    <span class="card-title">Luke Skywalker <LikeSwitch/></span>
+  <div class="image-placeholder"><img src={violentKitty} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+  <span class="card-title">Luke Skywalker <LikeSwitch/></span>
     
     <button class="card-button">Ver más</button>
   </div>

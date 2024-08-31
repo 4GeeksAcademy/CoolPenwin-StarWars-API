@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { LikeSwitch } from "../component/LikeSwitch";
 import "../../styles/demo.css";
+import violentKitty from "../../img/violentKitty.jpg";
+
 
 
 export const Demo = () => {
@@ -16,7 +18,8 @@ export const Demo = () => {
             <>
               <div class="star-wars-card">
                 <div class="card-content">
-                  <div class="card-image"></div>
+
+				<div class="image-placeholder"><img src={violentKitty} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
                   <span class="card-title">Luke Skywalker <LikeSwitch/></span>
                   <button class="card-button">Ver más</button>
                 </div>
