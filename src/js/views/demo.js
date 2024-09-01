@@ -107,7 +107,7 @@ export const Demo = () => {
           </div>
         ))}
       </div>
-
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzQxZjFlMXk4c2IzcjAwZXB0dDF0aXdlODNvZnUxbTZqZmE2b3hocCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hQW2Ngiulc5kQpNlsZ/giphy.webp" />
       <br />
       <br />
       <br />
