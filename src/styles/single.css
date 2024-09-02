@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18.75em;
-  height: 25em;
+  width: auto;
+  height: auto;
   position: relative;
   overflow: hidden;
   background: transparent;
@@ -180,9 +180,9 @@
 }
 
 
-.image-placeholder {
+#image-placeholder {
   width: 100%;
-  height: 200px;
+  height: auto;
   background: #555; /* Gray background for the image placeholder */
   margin-bottom: 1rem;
   clip-path: polygon(

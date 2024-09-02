@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Context } from "../store/appContext";
+
 
 
 export const CharacterList = () => {
