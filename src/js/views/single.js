@@ -8,29 +8,31 @@ import violentKitty from "../../img/violentKitty.jpg";
 
 export const Single = ({ character  }) => {
   const { store, actions } = useContext(Context);
-  const params = useParams();
+  const { uid } = useParams();
   return (
-    <div className="jumbotron">
-      <div class="star-wars-card">
-        <div class="card-content">
-          <div id="image-placeholder">
-            <img
-              src={violentKitty}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
+<div className="jumbotron text-center">
+  <div id="star-wars-card">
+    <div className="card-content">
+      {store.characters.map((character, index) => (
+        <div key={uid} className="card-item">
+          <div className="card-header">
+            <div className="image-placeholder">
+              <img
+                src={violentKitty}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+            <p className="character-name">{character.name}</p>
           </div>
-          {store.characters.map((character, index) => (
-             <div key={index} class="card-title">
-              
-            <h2>{character.name}
+          <div className="character-details">
+          <h1>{character.name}</h1>
             <LikeSwitch />
-            </h2>
-         
+          </div>
         </div>
-          ))}
-			  
-        </div>
-      </div>
+      ))}
+    </div>
+  </div>
+
      
 
       <Link to="/">

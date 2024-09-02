@@ -1,11 +1,39 @@
-.star-wars-card {
+#image-placeholder {
+  width: 90%;
+  height: auto;
+  background: #555; /* Gray background for the image placeholder */
+  margin-top: 10%;
+  margin-bottom: 1rem;
+  clip-path: polygon(
+    26% 0,
+    31% 5%,
+    61% 5%,
+    66% 0,
+    92% 0,
+    100% 8%,
+    100% 89%,
+    91% 100%,
+    80% 100%,
+    75% 95%,
+    55% 95%,
+    50% 100%,
+    7% 100%,
+    0 92%,
+    0 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#star-wars-card {
   font-family: sans-serif;
   font-style: normal;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 50%;
   height: auto;
   position: relative;
   overflow: hidden;
@@ -13,8 +41,8 @@
   margin:30px;
 }
 
-.star-wars-card::before,
-.star-wars-card::after {
+#star-wars-card::before,
+#star-wars-card::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -23,7 +51,7 @@
   left: 0;
 }
 
-.star-wars-card::before {
+#star-wars-card::before {
   filter: blur(2.5em);
   background: rgba(75, 213, 238, 0.3);
   clip-path: polygon(
@@ -45,7 +73,7 @@
   );
 }
 
-.star-wars-card::after {
+#star-wars-card::after {
   width: 98%;
   height: 98%;
   top: 1%;
@@ -162,7 +190,7 @@
   }
 }
 
-.star-wars-card {
+#star-wars-card {
   filter: drop-shadow(0 0 0.75rem #4bd5ee);
   animation: blinkShadowsFilter 8s ease-in infinite;
 }
@@ -179,30 +207,3 @@
   }
 }
 
-
-#image-placeholder {
-  width: 100%;
-  height: auto;
-  background: #555; /* Gray background for the image placeholder */
-  margin-bottom: 1rem;
-  clip-path: polygon(
-    26% 0,
-    31% 5%,
-    61% 5%,
-    66% 0,
-    92% 0,
-    100% 8%,
-    100% 89%,
-    91% 100%,
-    80% 100%,
-    75% 95%,
-    55% 95%,
-    50% 100%,
-    7% 100%,
-    0 92%,
-    0 0
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
