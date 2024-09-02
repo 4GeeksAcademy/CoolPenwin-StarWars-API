@@ -1,10 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const storedCharacters = JSON.parse(localStorage.getItem('characters')) || [];
+    const storedCharacters = JSON.parse(localStorage.getItem('characters')) || [];
     const storedPlanets = JSON.parse(localStorage.getItem('planets')) || [];
     const storedStarships = JSON.parse(localStorage.getItem('starships')) || [];
 
-	return {
-		store: {
+    return {
+        store: {
             characters: storedCharacters,
             planets: storedPlanets,
             starships: storedStarships,
@@ -46,22 +46,22 @@ const getState = ({ getStore, getActions, setStore }) => {
                 "Rebel transport": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFuU8a1SAbYGt_OcPa0KG5Vys6nalmiTVv1bDVD4YLicXfDa8_utaT29K2OFO6Uqg5itC3JyKn9LGPxBBXGpg247FErYMpNOe-HH17ynZ_vGH8E7Yi6amxrlcCawilj6drSPydWJExTh4/s1600/Rebel_transport_box_art.jpg"
             },
         
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			loadCharacters: async () => {
+            demo: [
+                {
+                    title: "FIRST",
+                    background: "white",
+                    initial: "white"
+                },
+                {
+                    title: "SECOND",
+                    background: "white",
+                    initial: "white"
+                }
+            ]
+        },
+        actions: {
+            // Use getActions to call a function within a function
+            loadCharacters: async () => {
                 try {
                     const response = await fetch('https://www.swapi.tech/api/people/');
                     const data = await response.json();
@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error("Error fetching characters:", error);
                 }
             },
-			loadPlanets: async () => {
+            loadPlanets: async () => {
                 try {
                     const response = await fetch('https://www.swapi.tech/api/planets/');
                     const data = await response.json();
@@ -99,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error("Error fetching planets:", error);
                 }
             },
-			loadStarships: async () => {
+            loadStarships: async () => {
                 try {
                     const response = await fetch('https://www.swapi.tech/api/starships/');
                     const data = await response.json();
@@ -119,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-			favoriteList: (name) => {
+            favoriteList: (name) => {
                 const store = getStore();
                 const favoriteItem = store.favoriteItem.includes(name)
                     ? store.favoriteItem.filter((item) => item !== name)
@@ -131,11 +131,56 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const store = getStore();
                 const newFavorites = store.favoriteItem.filter((item, i) => i !== index);
                 setStore({ favoriteItem: newFavorites });
+            },
+
+            // New functions
+            fetchInitialData: async () => {
+                try {
+                    const response = await fetch(baseURLDev + 'api/');
+                    const data = await response.json();
+                    localStorage.setItem('categories', JSON.stringify(data));
+                } catch (error) {
+                    console.error('Error fetching initial data:', error);
+                }
+            },
+
+            fetchCategoryData: async (categoryUrl, categoryName) => {
+                try {
+                    const response = await fetch(categoryUrl);
+                    const data = await response.json();
+                    localStorage.setItem(categoryName, JSON.stringify(data.results));
+                } catch (error) {
+                    console.error(`Error fetching data for ${categoryName}:`, error);
+                }
+            },
+
+            fetchAllCategories: async () => {
+                const categories = JSON.parse(localStorage.getItem('categories'));
+                for (const [categoryName, categoryUrl] of Object.entries(categories)) {
+                    await getActions().fetchCategoryData(categoryUrl, categoryName);
+                }
+            },
+
+            fetchMoreData: async (categoryName) => {
+                const categoryData = JSON.parse(localStorage.getItem(categoryName));
+                const nextUrl = categoryData.next;
+                if (nextUrl) {
+                    try {
+                        const response = await fetch(nextUrl);
+                        const data = await response.json();
+                        const updatedData = {
+                            ...categoryData,
+                            results: [...categoryData.results, ...data.results],
+                            next: data.next
+                        };
+                        localStorage.setItem(categoryName, JSON.stringify(updatedData));
+                    } catch (error) {
+                        console.error(`Error fetching more data for ${categoryName}:`, error);
+                    }
+                }
             }
         }
-			
-		
-	};
+    };
 };
 
 export default getState;

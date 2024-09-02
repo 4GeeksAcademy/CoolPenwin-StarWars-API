@@ -39,7 +39,9 @@ export const Demo = () => {
                   uid={character.uid} */}
               </span>
               <div className="row spacebetwen">
-                <button class="card-button">Ver más</button>
+              <Link to={"/single/Character/" + character.uid}>
+                  <button class="card-button">Ver más</button>
+                </Link>
                 <LikeSwitch />
               </div>
             </div>
