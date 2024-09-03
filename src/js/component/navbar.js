@@ -1,11 +1,11 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { BB8Switch } from "./BB8switch";
 import Pattern from "./patronMovil.js"; // Asegúrate de importar tu componente Pattern
 
 export const Navbar = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
   return (
     <nav className="navbar navbar-light bg-light mb-3 patroned">
@@ -23,8 +23,23 @@ export const Navbar = () => {
         <div className="dropdown">
           <button className="dropbtn">Liked Things</button>
           <div className="dropdown-content">
-            {store.favoriteItem}
-          </div>
+    {store.favoriteItem.length === 0 ? (
+        <p>No hay elementos en la lista de favoritos</p>
+    ) : (
+        <>
+            {store.favoriteItem.map((item, index) => (
+                <li key={index} className="d-flex justify-content-between border" >
+                    <i 
+                         className="fas fa-trash m-2 "
+                        onClick={() => actions.favoriteList(item)}
+                        ></i> 
+                    <span className="m-2 ">{item}</span>
+                </li>
+            ))}
+        
+                        </>
+    )}
+</div>
         </div>
       </div>
     </nav>
