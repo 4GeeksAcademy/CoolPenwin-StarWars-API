@@ -38,7 +38,7 @@ export const Demo = () => {
                 {/* <button onClick={() => actions.favoriteList(store.characters[0].properties.name)} />lool
                  </button > */}
                  <button onClick={() => actions.favoriteList(store.characters[character.uid-1].properties.name)}>
-                 <LikeSwitch/>
+                 {/* <LikeSwitch  key={index}/> */}
 LIKE
                  </button>
               </div>
@@ -71,7 +71,7 @@ LIKE
                   <button className="card-button">Ver más</button>
                 </Link>
                 <button onClick={() => actions.favoriteList(store.planets[planet.uid-1].properties.name)}>
-                <LikeSwitch  />
+                {/* <LikeSwitch  /> */}
                 LIKE
                 </button>
               </div>
@@ -104,7 +104,7 @@ LIKE
                   <button className="card-button">Ver más</button>
                 </Link>
                 <button onClick={() => actions.favoriteList(store.starships[starship.uid-1].properties.name)}>
-                <LikeSwitch  />
+                {/* <LikeSwitch  /> */}
                 LIKE
                 </button>
               </div>
