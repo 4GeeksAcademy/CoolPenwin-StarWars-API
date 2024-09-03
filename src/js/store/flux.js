@@ -118,20 +118,30 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error("Error fetching starships:", error);
                 }
             },
+            favoriteList: (nombre) => {
 
-            favoriteList: (name) => {
-                const store = getStore();
-                const favoriteItem = store.favoriteItem.includes(name)
-                    ? store.favoriteItem.filter((item) => item !== name)
-                    : [...store.favoriteItem, name];
-                setStore({ favoriteItem });
-            },
+				const store = getStore();
+
+				if (store.favoriteItem.includes(nombre)) {
+					setStore({ favoriteItem: store.favoriteItem.filter((nombreRepetido) => nombreRepetido != nombre) });
+				}
+				else {
+					setStore({ favoriteItem: [...store.favoriteItem, nombre] });
+				}
+			},
+            // favoriteList: (name) => {
+            //     const store = getStore();
+            //     const favoriteItem = store.favoriteItem.includes(name)
+            //         ? store.favoriteItem.filter((item) => item !== name)
+            //         :setStore({favoriteItem:[...store.favoriteItem, name] }) ;
+                
+            // },
             
-            removeFavorite: (index) => {
-                const store = getStore();
-                const newFavorites = store.favoriteItem.filter((item, i) => i !== index);
-                setStore({ favoriteItem: newFavorites });
-            },
+            // removeFavorite: (index) => {
+            //     const store = getStore();
+            //     const newFavorites = store.favoriteItem.filter((item, i) => i !== index);
+            //     setStore({ favoriteItem: newFavorites });
+            // },
 
             // // New functions
             // fetchInitialData: async () => {

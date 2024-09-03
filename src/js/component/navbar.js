@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { BB8Switch } from "./BB8switch";
 import Pattern from "./patronMovil.js"; // Asegúrate de importar tu componente Pattern
 
 export const Navbar = () => {
+  const { store } = useContext(Context);
+
   return (
     <nav className="navbar navbar-light bg-light mb-3 patroned">
       <Link to="/">
@@ -17,11 +20,12 @@ export const Navbar = () => {
         <BB8Switch />
       </div>
       <div className="ml-auto">
-        <Link to="/demo">
-          <button className="btn btn-primary">
-            Check the Context in action
-          </button>
-        </Link>
+        <div className="dropdown">
+          <button className="dropbtn">Liked Things</button>
+          <div className="dropdown-content">
+            {store.favoriteItem}
+          </div>
+        </div>
       </div>
     </nav>
   );

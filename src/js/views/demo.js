@@ -7,12 +7,8 @@ import violentKitty from "../../img/violentKitty.jpg";
 
 export const Demo = () => {
   const { store, actions } = useContext(Context);
-
-  // useEffect(() => {
-  //   actions.loadCharacters();
-  //   actions.loadPlanets();
-  //   actions.loadStarships();
-  // }, []);
+  console.log(store.favoriteItem);
+  // console.log(store.characters[0].properties.name);
 
   return (
     <div className="container">
@@ -23,26 +19,28 @@ export const Demo = () => {
         style={{ overflowX: "auto", maxWidth: "100vw" }}
       >
         {store.characters.map((character, index) => (
-          <div class="star-wars-card" key={index}>
-            <div class="card-content">
-              <div class="image-placeholder">
+          <div className="star-wars-card" key={index}>
+            <div className="card-content">
+              <div className="image-placeholder">
                 <img
                   src={violentKitty}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  alt="Kitty"
                 />
               </div>
-              <span class="card-title">
+              <span className="card-title">
                 {character.properties.name}
-                 {/* gender={character.properties.gender}
-                  hair_color={character.properties.hair_color}
-                  eye_color={character.properties.eye_color}
-                  uid={character.uid}  */}
               </span>
-              <div className="row spacebetwen">
-              <Link to={"/Character/" + character.uid}>
-                  <button class="card-button">Ver más</button>
+              <div className="row space-between">
+                <Link to={"/Character/" + character.uid}>
+                  <button className="card-button">Ver más</button>
                 </Link>
-                <LikeSwitch />
+                {/* <button onClick={() => actions.favoriteList(store.characters[0].properties.name)} />lool
+                 </button > */}
+                 <button onClick={() => actions.favoriteList(store.characters[character.uid-1].properties.name)}>
+                 <LikeSwitch/>
+LIKE
+                 </button>
               </div>
             </div>
           </div>
@@ -56,31 +54,31 @@ export const Demo = () => {
         style={{ overflowX: "auto", maxWidth: "100vw" }}
       >
         {store.planets.map((planet, index) => (
-          <div class="star-wars-card" key={index}>
-            <div class="card-content">
-              <div class="image-placeholder">
+          <div className="star-wars-card" key={index}>
+            <div className="card-content">
+              <div className="image-placeholder">
                 <img
                   src={violentKitty}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  alt="Kitty"
                 />
               </div>
-              <span class="card-title">
-              {planet.properties.name}
-                            {/* population={planet.properties.population}
-                            terrain={planet.properties.terrain}
-                            uid={planet.uid} */}
+              <span className="card-title">
+                {planet.properties.name}
               </span>
-              <div className="row spacebetwen">
-              <Link to={"/Planets/" + planet.uid}>
-                  <button class="card-button">Ver más</button>
+              <div className="row space-between">
+                <Link to={"/Planets/" + planet.uid}>
+                  <button className="card-button">Ver más</button>
                 </Link>
-                <LikeSwitch />
+                <button onClick={() => actions.favoriteList(store.planets[planet.uid-1].properties.name)}>
+                <LikeSwitch  />
+                LIKE
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-
 
       <h1 className="text-danger my-3">Starships</h1>
       <div
@@ -89,36 +87,48 @@ export const Demo = () => {
         style={{ overflowX: "auto", maxWidth: "100vw" }}
       >
         {store.starships.map((starship, index) => (
-          <div class="star-wars-card" key={index}>
-            <div class="card-content">
-              <div class="image-placeholder">
+          <div className="star-wars-card" key={index}>
+            <div className="card-content">
+              <div className="image-placeholder">
                 <img
                   src={violentKitty}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  alt="Kitty"
                 />
               </div>
-              <span class="card-title">
-              {starship.properties.name}
-                            {/* cost_in_credits={starship.properties.cost_in_credits}
-                            passengers={starship.properties.passengers}
-                            uid={starship.uid} */}
+              <span className="card-title">
+                {starship.properties.name}
               </span>
-              <div className="row spacebetwen">
-              <Link to={"/Starships/" + starship.uid}>
-                  <button class="card-button">Ver más</button>
+              <div className="row space-between">
+                <Link to={"/Starships/" + starship.uid}>
+                  <button className="card-button">Ver más</button>
                 </Link>
-                <LikeSwitch />
+                <button onClick={() => actions.favoriteList(store.starships[starship.uid-1].properties.name)}>
+                <LikeSwitch  />
+                LIKE
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzQxZjFlMXk4c2IzcjAwZXB0dDF0aXdlODNvZnUxbTZqZmE2b3hocCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hQW2Ngiulc5kQpNlsZ/giphy.webp" />
+      <img
+        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzQxZjFlMXk4c2IzcjAwZXB0dDF0aXdlODNvZnUxbTZqZmE2b3hocCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hQW2Ngiulc5kQpNlsZ/giphy.webp"
+        alt="GIF"
+      />
       <br />
       <br />
       <br />
       <br />
-    
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
