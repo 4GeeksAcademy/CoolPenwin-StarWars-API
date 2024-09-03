@@ -133,52 +133,52 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ favoriteItem: newFavorites });
             },
 
-            // New functions
-            fetchInitialData: async () => {
-                try {
-                    const response = await fetch(baseURLDev + 'api/');
-                    const data = await response.json();
-                    localStorage.setItem('categories', JSON.stringify(data));
-                } catch (error) {
-                    console.error('Error fetching initial data:', error);
-                }
-            },
+            // // New functions
+            // fetchInitialData: async () => {
+            //     try {
+            //         const response = await fetch(baseURLDev + 'api/');
+            //         const data = await response.json();
+            //         localStorage.setItem('categories', JSON.stringify(data));
+            //     } catch (error) {
+            //         console.error('Error fetching initial data:', error);
+            //     }
+            // },
 
-            fetchCategoryData: async (categoryUrl, categoryName) => {
-                try {
-                    const response = await fetch(categoryUrl);
-                    const data = await response.json();
-                    localStorage.setItem(categoryName, JSON.stringify(data.results));
-                } catch (error) {
-                    console.error(`Error fetching data for ${categoryName}:`, error);
-                }
-            },
+            // fetchCategoryData: async (categoryUrl, categoryName) => {
+            //     try {
+            //         const response = await fetch(categoryUrl);
+            //         const data = await response.json();
+            //         localStorage.setItem(categoryName, JSON.stringify(data.results));
+            //     } catch (error) {
+            //         console.error(`Error fetching data for ${categoryName}:`, error);
+            //     }
+            // },
 
-            fetchAllCategories: async () => {
-                const categories = JSON.parse(localStorage.getItem('categories'));
-                for (const [categoryName, categoryUrl] of Object.entries(categories)) {
-                    await getActions().fetchCategoryData(categoryUrl, categoryName);
-                }
-            },
+            // fetchAllCategories: async () => {
+            //     const categories = JSON.parse(localStorage.getItem('categories'));
+            //     for (const [categoryName, categoryUrl] of Object.entries(categories)) {
+            //         await getActions().fetchCategoryData(categoryUrl, categoryName);
+            //     }
+            // },
 
-            fetchMoreData: async (categoryName) => {
-                const categoryData = JSON.parse(localStorage.getItem(categoryName));
-                const nextUrl = categoryData.next;
-                if (nextUrl) {
-                    try {
-                        const response = await fetch(nextUrl);
-                        const data = await response.json();
-                        const updatedData = {
-                            ...categoryData,
-                            results: [...categoryData.results, ...data.results],
-                            next: data.next
-                        };
-                        localStorage.setItem(categoryName, JSON.stringify(updatedData));
-                    } catch (error) {
-                        console.error(`Error fetching more data for ${categoryName}:`, error);
-                    }
-                }
-            }
+            // fetchMoreData: async (categoryName) => {
+            //     const categoryData = JSON.parse(localStorage.getItem(categoryName));
+            //     const nextUrl = categoryData.next;
+            //     if (nextUrl) {
+            //         try {
+            //             const response = await fetch(nextUrl);
+            //             const data = await response.json();
+            //             const updatedData = {
+            //                 ...categoryData,
+            //                 results: [...categoryData.results, ...data.results],
+            //                 next: data.next
+            //             };
+            //             localStorage.setItem(categoryName, JSON.stringify(updatedData));
+            //         } catch (error) {
+            //             console.error(`Error fetching more data for ${categoryName}:`, error);
+            //         }
+            //     }
+            // }
         }
     };
 };

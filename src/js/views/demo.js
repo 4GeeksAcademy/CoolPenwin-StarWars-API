@@ -8,11 +8,11 @@ import violentKitty from "../../img/violentKitty.jpg";
 export const Demo = () => {
   const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.loadCharacters();
-    actions.loadPlanets();
-    actions.loadStarships();
-  }, []);
+  // useEffect(() => {
+  //   actions.loadCharacters();
+  //   actions.loadPlanets();
+  //   actions.loadStarships();
+  // }, []);
 
   return (
     <div className="container">
@@ -33,10 +33,10 @@ export const Demo = () => {
               </div>
               <span class="card-title">
                 {character.properties.name}
-                {/* gender={character.properties.gender}
+                 {/* gender={character.properties.gender}
                   hair_color={character.properties.hair_color}
                   eye_color={character.properties.eye_color}
-                  uid={character.uid} */}
+                  uid={character.uid}  */}
               </span>
               <div className="row spacebetwen">
               <Link to={"/single/Character/" + character.uid}>
@@ -71,7 +71,9 @@ export const Demo = () => {
                             uid={planet.uid} */}
               </span>
               <div className="row spacebetwen">
-                <button class="card-button">Ver más</button>
+              <Link to={"/single/Planets/" + planet.uid}>
+                  <button class="card-button">Ver más</button>
+                </Link>
                 <LikeSwitch />
               </div>
             </div>
@@ -102,7 +104,9 @@ export const Demo = () => {
                             uid={starship.uid} */}
               </span>
               <div className="row spacebetwen">
-                <button class="card-button">Ver más</button>
+              <Link to={"/single/Starships/" + starship.uid}>
+                  <button class="card-button">Ver más</button>
+                </Link>
                 <LikeSwitch />
               </div>
             </div>
