@@ -39,7 +39,7 @@ export const Demo = () => {
                   uid={character.uid}  */}
               </span>
               <div className="row spacebetwen">
-              <Link to={"/single/Character/" + character.uid}>
+              <Link to={"/Character/" + character.uid}>
                   <button class="card-button">Ver más</button>
                 </Link>
                 <LikeSwitch />
@@ -71,7 +71,7 @@ export const Demo = () => {
                             uid={planet.uid} */}
               </span>
               <div className="row spacebetwen">
-              <Link to={"/single/Planets/" + planet.uid}>
+              <Link to={"/Planets/" + planet.uid}>
                   <button class="card-button">Ver más</button>
                 </Link>
                 <LikeSwitch />
@@ -104,7 +104,7 @@ export const Demo = () => {
                             uid={starship.uid} */}
               </span>
               <div className="row spacebetwen">
-              <Link to={"/single/Starships/" + starship.uid}>
+              <Link to={"/Starships/" + starship.uid}>
                   <button class="card-button">Ver más</button>
                 </Link>
                 <LikeSwitch />
