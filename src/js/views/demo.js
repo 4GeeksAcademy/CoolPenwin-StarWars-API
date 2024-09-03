@@ -104,6 +104,7 @@ LIKE
                   <button className="card-button">Ver más</button>
                 </Link>
                 <button onClick={() => actions.favoriteList(store.starships[starship.uid-1].properties.name)}>
+                  
                 {/* <LikeSwitch  /> */}
                 LIKE
                 </button>

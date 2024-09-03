@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-        // instalar
-    // npm i styled-components
+import { Context } from "../store/appContext";
 
 export const BB8Switch = () => {
+  const { store, actions } = useContext(Context);
+  const { isChecked } = store;
+
+  useEffect(() => {
+    console.log("Checkbox state:", isChecked);
+    document.body.style.fontFamily = isChecked ? 'AurebeshFont, sans-serif' : 'Terran, sans-serif';
+    console.log("Current font family:", document.body.style.fontFamily);
+  }, [isChecked]);
+
+  const handleChange = () => {
+    actions.toggleCheckbox();
+  };
+
   return (
     <StyledWrapper>
       <label className="bb8-toggle">
-        <input className="bb8-toggle__checkbox" type="checkbox" />
+        <input
+          className="bb8-toggle__checkbox"
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleChange}
+        />
         <div className="bb8-toggle__container">
           <div className="bb8-toggle__scenery">
             <div className="bb8-toggle__star" />

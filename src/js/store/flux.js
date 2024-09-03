@@ -45,6 +45,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 "X-wing": "https://starwars-visualguide.com/assets/img/starships/12.jpg",
                 "Rebel transport": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFuU8a1SAbYGt_OcPa0KG5Vys6nalmiTVv1bDVD4YLicXfDa8_utaT29K2OFO6Uqg5itC3JyKn9LGPxBBXGpg247FErYMpNOe-HH17ynZ_vGH8E7Yi6amxrlcCawilj6drSPydWJExTh4/s1600/Rebel_transport_box_art.jpg"
             },
+            
+            isChecked: false,
+            // otros estados...
+        
         
             demo: [
                 {
@@ -60,6 +64,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             ]
         },
         actions: {
+            toggleCheckbox: () => {
+                const store = getStore();
+                setStore({ isChecked: !store.isChecked });
+            },
             // Use getActions to call a function within a function
             loadCharacters: async () => {
                 try {
