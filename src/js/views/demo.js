@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { LikeSwitch } from "../component/LikeSwitch";
@@ -7,8 +7,14 @@ import violentKitty from "../../img/violentKitty.jpg";
 
 export const Demo = () => {
   const { store, actions } = useContext(Context);
-  console.log(store.favoriteItem);
-  // console.log(store.characters[0].properties.name);
+
+  const handleToggle = (name) => {
+    actions.favoriteList(name);
+  };
+
+  const isLiked = (name) => {
+    return store.favoriteItem.includes(name);
+  };
 
   return (
     <div className="container">
@@ -28,19 +34,15 @@ export const Demo = () => {
                   alt="Kitty"
                 />
               </div>
-              <span className="card-title">
-                {character.properties.name}
-              </span>
+              <span className="card-title">{character.properties.name}</span>
               <div className="row space-between">
                 <Link to={"/Character/" + character.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                {/* <button onClick={() => actions.favoriteList(store.characters[0].properties.name)} />lool
-                 </button > */}
-                 <button onClick={() => actions.favoriteList(store.characters[character.uid-1].properties.name)}>
-                 {/* <LikeSwitch  key={index}/> */}
-LIKE
-                 </button>
+                <button onClick={() => handleToggle(character.properties.name)}>
+                  <LikeSwitch isLiked={isLiked(character.properties.name)} onToggle={() => handleToggle(character.properties.name)} />
+                  LIKE
+                </button>
               </div>
             </div>
           </div>
@@ -63,16 +65,14 @@ LIKE
                   alt="Kitty"
                 />
               </div>
-              <span className="card-title">
-                {planet.properties.name}
-              </span>
+              <span className="card-title">{planet.properties.name}</span>
               <div className="row space-between">
                 <Link to={"/Planets/" + planet.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                <button onClick={() => actions.favoriteList(store.planets[planet.uid-1].properties.name)}>
-                {/* <LikeSwitch  /> */}
-                LIKE
+                <button onClick={() => handleToggle(planet.properties.name)}>
+                  <LikeSwitch isLiked={isLiked(planet.properties.name)} onToggle={() => handleToggle(planet.properties.name)} />
+                  LIKE
                 </button>
               </div>
             </div>
@@ -96,17 +96,14 @@ LIKE
                   alt="Kitty"
                 />
               </div>
-              <span className="card-title">
-                {starship.properties.name}
-              </span>
+              <span className="card-title">{starship.properties.name}</span>
               <div className="row space-between">
                 <Link to={"/Starships/" + starship.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                <button onClick={() => actions.favoriteList(store.starships[starship.uid-1].properties.name)}>
-                  
-                {/* <LikeSwitch  /> */}
-                LIKE
+                <button onClick={() => handleToggle(starship.properties.name)}>
+                  <LikeSwitch isLiked={isLiked(starship.properties.name)} onToggle={() => handleToggle(starship.properties.name)} />
+                  LIKE
                 </button>
               </div>
             </div>
@@ -124,12 +121,3 @@ LIKE
     </div>
   );
 };
-
-
-
-
-
-
-
-
-

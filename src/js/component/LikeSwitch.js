@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-export const LikeSwitch = () => {
+export const LikeSwitch = ({ isLiked, onToggle }) => {
   return (
     <StyledWrapper>
       <div className="love">
-        <input id="switch" type="checkbox" />
+        <input 
+          id="switch" 
+          type="checkbox" 
+          checked={isLiked} 
+          onChange={onToggle} 
+        />
         <label className="love-heart" htmlFor="switch">
           <i className="left" />
           <i className="right" />
