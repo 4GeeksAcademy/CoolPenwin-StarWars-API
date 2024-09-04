@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     width: 18.75em;
-    height: 25em;
+    height: auto;
     position: relative;
     overflow: hidden;
     background: transparent;

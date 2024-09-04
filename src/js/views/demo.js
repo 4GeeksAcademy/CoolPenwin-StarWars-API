@@ -9,11 +9,14 @@ export const Demo = () => {
   const { store, actions } = useContext(Context);
 
   const handleToggle = (name) => {
+    console.log("Toggling favorite for:", name); // Verificar nombre del ítem
     actions.favoriteList(name);
   };
 
   const isLiked = (name) => {
-    return store.favoriteItem.includes(name);
+    const liked = store.favoriteItem.includes(name);
+    console.log("Is liked:", name, liked); // Verificar si el ítem está en favoritos
+    return liked;
   };
 
   return (
@@ -39,10 +42,14 @@ export const Demo = () => {
                 <Link to={"/Character/" + character.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                <button onClick={() => handleToggle(character.properties.name)}>
-                  <LikeSwitch isLiked={isLiked(character.properties.name)} onToggle={() => handleToggle(character.properties.name)} />
-                  LIKE
+                <br/>
+                <button 
+                  className="card-button" 
+                  onClick={() => handleToggle(character.properties.name)}
+                >
+                  {isLiked(character.properties.name) ? "LIKED" : "LIKE"}
                 </button>
+                <br />
               </div>
             </div>
           </div>
@@ -70,10 +77,14 @@ export const Demo = () => {
                 <Link to={"/Planets/" + planet.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                <button onClick={() => handleToggle(planet.properties.name)}>
-                  <LikeSwitch isLiked={isLiked(planet.properties.name)} onToggle={() => handleToggle(planet.properties.name)} />
-                  LIKE
+                <br/>
+                <button 
+                  className="card-button" 
+                  onClick={() => handleToggle(planet.properties.name)}
+                >
+                  {isLiked(planet.properties.name) ? "LIKED" : "LIKE"}
                 </button>
+                <br />
               </div>
             </div>
           </div>
@@ -101,10 +112,14 @@ export const Demo = () => {
                 <Link to={"/Starships/" + starship.uid}>
                   <button className="card-button">Ver más</button>
                 </Link>
-                <button onClick={() => handleToggle(starship.properties.name)}>
-                  <LikeSwitch isLiked={isLiked(starship.properties.name)} onToggle={() => handleToggle(starship.properties.name)} />
-                  LIKE
+                <br/>
+                <button 
+                  className="card-button" 
+                  onClick={() => handleToggle(starship.properties.name)}
+                >
+                  {isLiked(starship.properties.name) ? "LIKED" : "LIKE"}
                 </button>
+                <br />
               </div>
             </div>
           </div>
