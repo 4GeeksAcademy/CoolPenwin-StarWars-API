@@ -34,7 +34,7 @@ export const SingleAll = () => {
   };
 
   return (
-    <div className="jumbotron text-center">
+    <div className="jumbotron text-center d-flex align-items-center justify-content-center">
       <div id="star-wars-card">
         <div className="card-content">
           <div className="card-item">
