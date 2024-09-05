@@ -82,6 +82,13 @@ export const SingleAll = () => {
                   <p>Model: {resource.properties.model}</p>
                   <p>Starship Class: {resource.properties.starship_class}</p>
                   <p>Manufacturer: {resource.properties.manufacturer}</p>
+                  <p>Length: {resource.properties.length}</p>
+                  <p>Max crew: {resource.properties.crew}</p>
+                  <p>Max cargo: {resource.properties.cargo_capacity}</p>
+                  <p>Max Atm speed: {resource.properties.max_atmosphering_speed} parSec</p>
+                  <p>Hiper Drive speed: {resource.properties.hyperdrive_rating}</p>
+                  <p>MGLT: {resource.properties.MGLT} </p>
+                  <p>Prize: {resource.properties.cost_in_credits} credits</p>
                 </div>
               )}
 
