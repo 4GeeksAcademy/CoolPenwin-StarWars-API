@@ -59,6 +59,9 @@ export const SingleAll = () => {
                   <p>Birth Year: {resource.properties.birth_year}</p>
                   <p>Skin Color: {resource.properties.skin_color}</p>
                   <p>Hair Color: {resource.properties.hair_color}</p>
+                  <p>Eye Color: {resource.properties.eye_color}</p>
+                  <p>Height: {resource.properties.height} cm</p>
+                  <p>Mass: {resource.properties.mass} wtf</p>
                 </div>
               )}
               {resourceType === "planets" && (
@@ -66,6 +69,12 @@ export const SingleAll = () => {
                   <p>Diameter: {resource.properties.diameter}</p>
                   <p>Climate: {resource.properties.climate}</p>
                   <p>Terrain: {resource.properties.terrain}</p>
+                  <p>Population: {resource.properties.population}</p>
+                  <p>Rotation period: {resource.properties.rotation_period}</p>
+                  <p>Orbital period: {resource.properties.orbital_period}</p>
+                  <p>Gravity: {resource.properties.gravity}</p>
+                  <p>Water surface: {resource.properties.surface_water}</p>
+                  
                 </div>
               )}
               {resourceType === "starships" && (
@@ -83,6 +92,9 @@ export const SingleAll = () => {
               >
                 {isLiked(resource.properties.name) ? "LIKED" : "LIKE"}
               </button>
+              <br/>
+              <br/>
+              <br/>
             </div>
           </div>
         </div>
