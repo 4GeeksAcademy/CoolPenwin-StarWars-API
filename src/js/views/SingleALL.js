@@ -46,10 +46,11 @@ export const SingleAll = () => {
                   alt="Placeholder"
                 />
               </div>
-              <p className="resource-name">
+              <span className="card-title">  
                 {resource.properties.name !== "n/a" && resource.properties.name}
+                </span>
                 <br />
-              </p>
+                <br />
             </div>
             <div className="resource-details">
               {/* Mostrar los detalles del recurso dependiendo del tipo */}

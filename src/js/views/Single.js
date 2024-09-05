@@ -41,9 +41,9 @@ export const SingleChar = ({ character, starships, planets  }) => {
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>
-              <p className="character-name">                
+              <span className="card-title">              
                 {store.characters[params.theid-1].properties.name==="n/a"||undefined ? " ":  store.characters[params.theid-1].properties.name }<br/>
-              </p>
+                </span>
             </div>
             <div className="character-details">
              
