@@ -39,9 +39,9 @@ export const Demo = () => {
               </div>
               <span className="card-title">{character.properties.name}</span>
               <div className="row space-between">
-                <Link to={"/Character/" + character.uid}>
-                  <button className="card-button">Ver más</button>
-                </Link>
+              <Link to={"/characters/" + character.uid}>
+  <button className="card-button">Ver más</button>
+</Link>
                 <br/>
                 <button 
                   className="card-button" 

@@ -4,6 +4,8 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
+import { Single } from "./views/Single.js";
+import { SingleAll } from "./views/SingleALL.js";
 import { SingleChar } from "./views/SingleChar.js";
 import { SinglePlanet } from "./views/SinglePlanet.js";
 import { SingleStarships } from "./views/SingleStarships.js";
@@ -27,9 +29,15 @@ const Layout = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/demo" element={<Demo />} />
+
+            <Route path="/:type/:theid" element={<SingleAll />} />
+            
+            {/* <Route path="/Single/:category/:uid" element={<Single />} /> */}
+{/* 
             <Route path="/Character/:theid" element={<SingleChar />} />
             <Route path="/Planets/:theid" element={<SinglePlanet />} />
-            <Route path="/Starships/:theid" element={<SingleStarships />} />
+            <Route path="/Starships/:theid" element={<SingleStarships />} /> */}
+
             <Route path="*" element={<Err404 />} />
           </Routes>
           <Footer />
